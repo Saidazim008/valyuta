@@ -1,0 +1,17 @@
+/* NotePage.css */
+.error-box {
+  background-color: #fef2f2; 
+  border: 2px solid #ef4444;
+  padding: 40px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.back-btn {
+  background: #374151;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
