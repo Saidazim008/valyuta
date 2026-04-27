@@ -1,8 +1,7 @@
-import React from 'react'
-import "./style./StyleComponent"
-// import { BrowserRouter as Router, Routes, Route useNavigate } from 'react-router-dom';
-import Home from './pages/home./Home.jsx';
-import { useState } from 'react';
+
+import "./style/style.component.js"
+import Home from './pages/home/Home';
+
 
 const App = () => {
   return (
