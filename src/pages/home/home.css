@@ -1,0 +1,493 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.home-layout {
+    width: 100%;
+    padding-left: 250px;
+}
+
+.home-main {
+    margin-top: 100px;
+    width: 100%;
+
+}
+
+.container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-right: 42px;
+}
+
+.categors-qisim {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.flex-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.juft-iconlar {
+    display: flex;
+    gap: 10px;
+}
+
+.categors-qisim h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+
+}
+
+.basket-icon {
+    font-size: 26px;
+    cursor: pointer;
+    color: #555;
+    transition: 0.3s;
+}
+
+.basket-icon:hover {
+    color: #00ff95;
+}
+
+/* O'qlar uchun konteyner */
+.arrow-icon {
+    background-color: #00ff95;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 35px;
+    /* Biroz kattalashtirildi, qisilib qolmasligi uchun */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.arrow-icon:hover {
+    background-color: #00cc78;
+}
+
+/* Ikonkaning o'ziga svg orqali stil beramiz */
+.arrow-icon svg {
+    font-size: 22px;
+}
+
+
+
+
+.categories-wrapper {
+    display: grid;
+    /* 10 ta elementni teng taqsimlaydi */
+    grid-template-columns: repeat(10, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.category-cart {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.category-cart:hover {
+    border-color: #00ff95;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.cart-img-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.cart-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.cart-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+.products-grid {
+    display: grid;
+    /* 5 ta bir xil ustun, orasi 20px masofa */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.product-cart {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 15px;
+    position: relative;
+    /* Yurakchani burchakka taqash uchun */
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+}
+
+.product-cart:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    border-color: #00ff95;
+}
+
+/* O'ng burchakdagi yurakcha uchun */
+.heart-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.heart-icon:hover {
+    color: #ff4d4d;
+}
+
+.product-img-box {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.product-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    /* Narx chapda, plyus o'ngda */
+    align-items: center;
+    margin-top: auto;
+    /* Elementlarni har doim kartaning pastiga taqaydi */
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+}
+
+.add-to-cart-btn {
+    width: 35px;
+    height: 35px;
+    background-color: #00ff95;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #00cc78;
+    transform: scale(1.1);
+}
+
+
+
+.special-offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 ta ustun */
+    gap: 25px;
+    margin-top: 30px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.discount-card {
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    min-height: 180px;
+}
+
+.discount-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.discount-info {
+    flex: 1.5;
+}
+
+.discount-percent {
+    color: #27ae60;
+    font-weight: 800;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.discount-info h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.discount-info p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.shop-now-white {
+    background-color: #ffffff;
+    color: #222;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.shop-now-white:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+.discount-img {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.discount-img img {
+    max-width: 100px;
+    height: auto;
+    object-fit: contain;
+    /* Rasmga biroz soya berish */
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.1));
+}
+
+
+/* Savat Drawer (O'ng tarafdan chiqishi) */
+.side-cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* transform propersiyasi JS dagi inline style orqali boshqariladi */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Savat ichidagi mahsulotlar qatori */
+.cart-body-items {
+    margin-top: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.cart-item-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.cart-item-row img {
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+/* Savatdagi Saqlash tugmasi */
+.save-btn-main {
+    width: 100%;
+    padding: 15px;
+    background-color: #00ff95;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn-main:hover {
+    background-color: #00cc78;
+}
+
+/* Fonni xiralashtirish (Overlay) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+/* Markaziy Order Modal */
+.order-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.order-modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 380px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.order-modal-box h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.order-modal-box input,
+.order-modal-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    outline: none;
+}
+
+.order-modal-box input:focus {
+    border-color: #00ff95;
+}
+
+.order-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.order-btns button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.order-btns button[type="button"] {
+    background-color: #f0f0f0;
+}
+
+.order-btns .confirm-btn {
+    background-color: #00ff95;
+    color: white;
+}
+
+/* Savat ikonkasidagi qizil raqam (badge) */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.side-cart {
+    transition: transform 0.3s ease-in-out;
+}
+
+.side-cart.open {
+    transform: translateX(0) !important;
+}
+
+
+

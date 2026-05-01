@@ -1,0 +1,83 @@
+.saidbar {
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 100;
+    border-right: 1px solid #ddd;
+}
+
+.saidbar-img {
+    display: block;
+    width: 150px;
+    margin: 10px auto;
+    object-fit: cover;
+}
+
+/* 
+.sidebar-hr {
+    border: 0;
+    border-top: 1px solid #6d6a6a;
+    margin: 0 20px;
+} */
+
+.dashbortlar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 15px;
+
+}
+
+.sidebar-link {
+    text-decoration: none;
+    color: #555;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.sidebar-link h3 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #00ff95;
+    border-radius: 10px;
+}
+
+
+.sidebar-link:hover h3 {
+    background-color: #00ff95;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Aktiv sahifa stili */
+.sidebar-link.active-link h3 {
+    background-color: #00ff95;
+    color: white;
+}
+
+
+.sidebar-badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid #fff;
+}
