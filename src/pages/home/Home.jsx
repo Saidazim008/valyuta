@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./home.css";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 
 const Home = () => {
-  // Eng kerakli valyutalar ro'yxati kengaytirildi
+  // Dastlabki (default) valyutalar ro'yxati
   const [valyutalar, setValyutalar] = useState([
     { id: 1, nomi: "USD", tuliqNomi: "AQSH Dollari", sum: 12800, bayroq: "🇺🇸", klass: "fi fi-us" },
     { id: 2, nomi: "EUR", tuliqNomi: "Evro", sum: 13500, bayroq: "🇪🇺", klass: "fi fi-eu" },
@@ -20,25 +20,38 @@ const Home = () => {
   const [danKurs, setDanKurs] = useState(12800);
   const [gaKurs, setGaKurs] = useState(1);
 
-  useEffect(() => {
+  // API'dan ma'lumot olish funksiyasi
+  const getKurslar = useCallback(() => {
     fetch("https://cbu.uz/uz/arkhiv-kursov-valyut/json/")
       .then((res) => res.json())
       .then((data) => {
-        const yangilangan = valyutalar.map((v) => {
-          if (v.nomi === "UZS") return v;
-          const apiValyuta = data.find((item) => item.Ccy === v.nomi);
-          return apiValyuta ? { ...v, sum: Number(apiValyuta.Rate) } : v;
-        });
-        setValyutalar(yangilangan);
+        setValyutalar((oldValyutalar) => {
+          const newValues = oldValyutalar.map((v) => {
+            if (v.nomi === "UZS") return v;
+            const apiData = data.find((item) => item.Ccy === v.nomi);
+            return apiData ? { ...v, sum: parseFloat(apiData.Rate) } : v;
+          });
 
-        // Boshlang'ich kursni bankdan kelgan USD kursiga yangilab qo'yamiz
-        const liveUsd = yangilangan.find(v => v.nomi === "USD");
-        if (liveUsd) setDanKurs(liveUsd.sum);
+          // Sayt yuklanganda USD kursini avtomatik tanlash
+          const currentUsd = newValues.find(v => v.nomi === "USD");
+          if (currentUsd) setDanKurs(currentUsd.sum);
+
+          return newValues;
+        });
       })
-      .catch((err) => console.log("Xatolik:", err));
+      .catch((err) => console.error("API bilan bog'lanishda xato:", err));
   }, []);
 
+  useEffect(() => {
+    getKurslar();
+  }, [getKurslar]);
+
+  // Hisoblash formulasi
   const natija = (miqdor * danKurs) / gaKurs;
+
+  // Joriy tanlangan valyutalarning klassini topish (bayroqlar uchun)
+  const danKlass = valyutalar.find((v) => v.sum === danKurs)?.klass || "";
+  const gaKlass = valyutalar.find((v) => v.sum === gaKurs)?.klass || "";
 
   return (
     <div className="converter-card">
@@ -48,9 +61,9 @@ const Home = () => {
         <label>Miqdorni kiriting:</label>
         <input
           type="number"
-          min="0"
           className="amount-input"
           placeholder="Masalan: 100"
+          value={miqdor || ""}
           onChange={(e) => setMiqdor(Number(e.target.value))}
         />
       </div>
@@ -59,7 +72,7 @@ const Home = () => {
         <div className="select-item">
           <label>Dan:</label>
           <div className="select-wrapper">
-            <span className={valyutalar.find((v) => v.sum === danKurs)?.klass}></span>
+            <span className={danKlass}></span>
             <select
               className="currency-select"
               value={danKurs}
@@ -67,21 +80,21 @@ const Home = () => {
             >
               {valyutalar.map((v) => (
                 <option key={v.id} value={v.sum}>
-                  {v.bayroq} {v.nomi}
+                  {v.nomi} ({v.tuliqNomi})
                 </option>
               ))}
             </select>
           </div>
         </div>
 
-        <span className="arrow">
+        <div className="arrow">
           <FaArrowRightArrowLeft />
-        </span>
+        </div>
 
         <div className="select-item">
           <label>Ga:</label>
           <div className="select-wrapper">
-            <span className={valyutalar.find((v) => v.sum === gaKurs)?.klass}></span>
+            <span className={gaKlass}></span>
             <select
               className="currency-select"
               value={gaKurs}
@@ -89,7 +102,7 @@ const Home = () => {
             >
               {valyutalar.map((v) => (
                 <option key={v.id} value={v.sum}>
-                  {v.bayroq} {v.nomi}
+                  {v.nomi} ({v.tuliqNomi})
                 </option>
               ))}
             </select>
@@ -105,7 +118,7 @@ const Home = () => {
             maximumFractionDigits: 2,
           })}
         </h1>
-        <p className="result-sub">Markaziy Bankning rasmiy kursi</p>
+        <p className="result-sub">Markaziy Bankning rasmiy kursi asosida</p>
       </div>
     </div>
   );
