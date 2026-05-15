@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <div className="app-wrapper" style={{
-      display: 'flex',
+      display: 'flex',  
       flexDirection: 'column',
       minHeight: '100vh',
       backgroundColor: '#f4f7f6' // Telefon uchun yumshoqroq rang

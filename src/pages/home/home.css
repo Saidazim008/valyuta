@@ -2,61 +2,66 @@
     max-width: 400px;
     width: 100%;
     margin: 20px auto;
-    padding: 25px 20px;
-    background: white;
+    padding: 30px 24px;
+    background: #ffffff;
     border-radius: 24px;
-    /* Burchaklar yumshoqroq */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
     text-align: center;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #f2f4f7;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .title {
-    color: #1a1a1a;
-    margin-bottom: 25px;
-    font-size: 22px;
+    color: #14171a;
+    margin-bottom: 28px;
+    font-size: 24px;
     font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .input-field {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .input-field label,
 .select-item label {
     display: block;
-    font-size: 13px;
-    color: #888;
+    font-size: 12px;
+    color: #909499;
     margin-bottom: 8px;
-    margin-left: 5px;
+    margin-left: 4px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
 }
 
 .amount-input {
     width: 100%;
-    padding: 15px;
-    border-radius: 12px;
-    border: 2px solid #f0f0f0;
-    font-size: 20px;
-    font-weight: 600;
-    transition: 0.3s;
+    padding: 16px;
+    border-radius: 14px;
+    border: 2px solid #eef1f6;
+    font-size: 22px;
+    font-weight: 700;
+    color: #14171a;
+    transition: all 0.25s ease;
     box-sizing: border-box;
+    background-color: #f8fafc;
 }
 
 .amount-input:focus {
-    border-color: #007bff;
+    border-color: #007aff;
     outline: none;
-    background-color: #fff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
 }
 
 .select-group {
     display: flex;
     flex-direction: column;
-    /* Mobil uchun ustun shaklida */
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 16px;
+    margin-bottom: 28px;
     align-items: center;
 }
 
@@ -65,80 +70,183 @@
     text-align: left;
 }
 
+/* ZAMONAVIY: Select qoplamasi yanada kattalashtirildi */
 .select-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: #f8f9fa;
-    padding: 12px 15px;
-    border-radius: 12px;
-    border: 2px solid #f0f0f0;
+    background-color: #f8fafc;
+    padding: 0 16px;
+    /* padding-top/bottom olib tashlandi, chunki ichidagi select uni kengaytiradi */
+    border-radius: 14px;
+    border: 2px solid #eef1f6;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    height: 60px;
+    /* Balandlik yozuv kattalashgani uchun 54px dan 60px ga oshirildi */
 }
 
+/* Bayroq dizayni */
 .select-wrapper .fi {
-    width: 24px;
-    height: 18px;
-    border-radius: 3px;
+    width: 26px;
+    height: 19px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
 }
 
+/* YANGILANDI: Select ichidagi asosiy yozuvga to'liq padding va line-height berildi */
 .currency-select {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+
+    /* MANA SIZ SO'RAGAN PADDINGLAR: Tepadan/pastdan va yonlardan masofa */
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 54px;
+    /* Bayroqqa tegib ketmasligi uchun */
+    padding-right: 42px;
+    /* O'qchaga tegib ketmasligi uchun */
+
+    /* Yozuvning o'zi chiroyli va qatlamli turishi uchun qator balandligi */
+    line-height: 28px;
+
     border: none;
     background: transparent;
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
+    font-size: 18px;
+    /* Shrift ham biroz kattalashtirildi */
+    font-weight: 700;
+    color: #14171a;
     outline: none;
     cursor: pointer;
+    box-sizing: border-box;
+    z-index: 2;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Ochiladigan ro'yxat (Option) elementlari dizayni */
+.currency-select option {
+    background-color: #ffffff;
+    color: #14171a;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 2.5;
+    padding: 15px 10px;
+}
+
+/* O'ng tomondagi o'qcha */
+.select-wrapper::after {
+    content: "➔";
+    font-size: 12px;
+    color: #a0aec0;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    z-index: 1;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Effektlar */
+.select-wrapper:hover {
+    border-color: #cbd5e1;
+}
+
+.select-wrapper:focus-within {
+    border-color: #007aff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+.select-wrapper:focus-within::after {
+    color: #007aff;
 }
 
 .arrow {
-    background: #007bff;
-    color: white;
-    width: 40px;
-    height: 40px;
+    background: #007aff;
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     font-size: 18px;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.35);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
 }
 
+.arrow:hover {
+    background: #0069d9;
+    transform: scale(1.05);
+}
+
+.arrow:active {
+    transform: scale(0.95);
+}
+
+/* Natija oynasi */
 .result-container {
-    background: linear-gradient(135deg, #f0f7ff 0%, #e1f0ff 100%);
-    padding: 25px;
-    border-radius: 18px;
-    border: none;
+    background: linear-gradient(135deg, #f4f9ff 0%, #e8f3ff 100%);
+    padding: 26px 20px;
+    border-radius: 20px;
+    border: 1px solid #d0e7ff;
+    box-sizing: border-box;
 }
 
 .result-label {
-    font-size: 14px;
-    color: #667c99;
-    margin-bottom: 5px;
+    font-size: 13px;
+    color: #5c728a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
 }
 
 .result-value {
     color: #0056b3;
-    font-size: 32px;
+    font-size: 30px;
     margin: 5px 0;
-    font-weight: 800;
+    font-weight: 900;
+    word-break: break-all;
+    letter-spacing: -0.5px;
 }
 
 .result-sub {
     font-size: 12px;
-    color: #28a745;
-    font-weight: 600;
-    margin-top: 10px;
+    color: #1ea242;
+    font-weight: 700;
+    margin-top: 12px;
+    display: inline-block;
+    background: rgba(30, 162, 66, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
 }
 
-/* Planshet va Kompyuter uchun yonma-yon qilish */
+/* Planshet va Kompyuter ekranlari */
 @media (min-width: 481px) {
     .select-group {
         flex-direction: row;
+        align-items: flex-end;
+        gap: 12px;
     }
 
     .arrow {
-        margin-top: 20px;
+        margin-bottom: 8px;
+        /* Kattalashgan wrapperga moslab o'rtaga tekislandi */
     }
 }
