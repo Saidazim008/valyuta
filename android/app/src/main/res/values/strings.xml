@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Valyuta Kurslari</string>
+    <string name="title_activity_main">Valyuta Kurslari</string>
+    <string name="package_name">com.saidazimxon.valyuta</string>
+    <string name="custom_url_scheme">com.saidazimxon.valyuta</string>
+</resources>
